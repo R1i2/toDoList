@@ -3,12 +3,14 @@
   <h1><%=listItem%></h1>
 </div>
 <div class="box">
-  <% for (let i=0;i < Todo.length ;i++){%>
+  <% Todo.forEach(function(elements){%>
+  <form method="post" action="/delete">
   <div class="item">
-    <input type="checkbox" />
-    <p><%=Todo[i]%></p>
+    <input type="checkbox" onChange="this.form.submit()" name="checkbox" value="<%=elements._id%>"/>
+    <p><%=elements.name%></p>
   </div>
-  <%}%>
+</form>
+  <%})%>
 
   <form class="item" method="post" action="/">
     <input
